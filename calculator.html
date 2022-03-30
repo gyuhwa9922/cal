@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>계산기</title>
+    <style>
+      * { box-sizing: border-box }
+      #result { width: 180px; height: 50px; margin: 5px; text-align: right }
+      #operator { width: 50px; height: 50px; margin: 5px; text-align: center }
+      button { width: 50px; height: 50px; margin: 5px }
+    </style>
+  </head>
+  
+<body>
+<input readonly id="operator">  
+<input readonly type="number" id="result">
+<div class="row">
+  <input readonly id="operator">
+  <input readonly type="number" id="result">
+  <div class="row">
+    <button id="num-7">7</button>
+    <button id="num-8">8</button>
+    <button id="num-9">9</button>
+    <button id="plus">+</button>
+</div>
+<div class="row">
+  </div>
+  <div class="row">
+    <button id="num-4">4</button>
+    <button id="num-5">5</button>
+    <button id="num-6">6</button>
+    <button id="minus">-</button>
+</div>
+<div class="row">
+  </div>
+  <div class="row">
+    <button id="num-1">1</button>
+    <button id="num-2">2</button>
+    <button id="num-3">3</button>
+    <button id="divide">/</button>
+</div>
+<div class="row">
+  </div>
+  <div class="row">
+    <button id="clear">C</button>
+    <button id="num-0">0</button>
+    <button id="calculate">=</button>
+    <button id="multiply">x</button>
+</div>
+  </div>
+  <script>
+    let numOne = ''; //첫번째 숫자
+    let operator = ''; //+ or - or / or *
+    let numTwo = ''; //두번째 숫자
+    const $operator = document.querySelector('#operator');
+    const $result = document.querySelector('#result');
+    const onclicknumber = (event) => {
+        //return 생략
+        if(operator) {
+            numTwo += event.target.textContent;
+        }else{
+            numOne += event.target.textContent;
+        }
+        $result.value += event.target.textContent;
+    };
+
+    document.querySelector('#num-0').addEventListener('click', onclicknumber); //0
+    document.querySelector('#num-1').addEventListener('click', onclicknumber);//1
+    document.querySelector('#num-2').addEventListener('click', onclicknumber);//2
+    document.querySelector('#num-3').addEventListener('click', onclicknumber);//3
+    document.querySelector('#num-4').addEventListener('click', onclicknumber);//4
+    document.querySelector('#num-5').addEventListener('click', onclicknumber);//5
+    document.querySelector('#num-6').addEventListener('click', onclicknumber);//6
+    document.querySelector('#num-7').addEventListener('click', onclicknumber);//7
+    document.querySelector('#num-8').addEventListener('click', onclicknumber);//8
+    document.querySelector('#num-9').addEventListener('click', onclicknumber);//9
+    document.querySelector('#plus').addEventListener('click', onclicknumber); // 더하기
+    document.querySelector('#minus').addEventListener('click', onclicknumber); //빼기
+    document.querySelector('#divide').addEventListener('click', onclicknumber); // 나누기
+    document.querySelector('#multiply').addEventListener('click', onclicknumber); // 곱하기
+    document.querySelector('#calculate').addEventListener('click', onclicknumber); // 계산결과
+    document.querySelector('#clear').addEventListener('click', onclicknumber); //clear 초기화
+  </script>
+</body>
+</html>
