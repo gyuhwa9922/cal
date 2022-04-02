@@ -60,6 +60,16 @@
         numTwo += event.target.textContent;
         $result.value += event.target.textContent;
     };
+    
+    const onClickOperator = (op) => () => {
+    if (numOne) {
+        /*첫번째 숫자가 존재하면*/
+      operator = op; 
+      $operator.value = op;
+    } else {
+      alert('숫자를 먼저 입력하세요.');
+    }
+  };
     document.querySelector('#num-0').addEventListener('click', onclicknumber); //0
     document.querySelector('#num-1').addEventListener('click', onclicknumber);//1
     document.querySelector('#num-2').addEventListener('click', onclicknumber);//2
@@ -70,17 +80,6 @@
     document.querySelector('#num-7').addEventListener('click', onclicknumber);//7
     document.querySelector('#num-8').addEventListener('click', onclicknumber);//8
     document.querySelector('#num-9').addEventListener('click', onclicknumber);//9
-
-    const onClickOperator = (op) => () => {
-    if (numOne) {
-        /*첫번째 숫자가 존재하면*/
-      operator = op;
-      $operator.value = op;
-    } else {
-      alert('숫자를 먼저 입력하세요.');
-    }
-  }
-
     document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
     document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
     document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
@@ -103,6 +102,10 @@
                 default :
                     break;
             }
+            numOne = $result.value; // 계산을 연달아 하기 위해 결과 값을 첫번째 값에 대입
+            operator = ''; // 값 초기화
+            numTwo = ''; // 값 초기화
+            $operator.value = ''; // 값 초기화
         }else {
             alert('숫자를 먼저 입력하시오.');
         }
